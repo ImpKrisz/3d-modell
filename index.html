@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D Modell</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      body { margin: 0; background: #f5f5f5; }
+      model-viewer { width: 100vw; height: 100vh; }
+    </style>
+  </head>
+  <body>
+    <model-viewer src="Ceklima_belteri.glb"
+                  alt="3D modell"
+                  auto-rotate
+                  camera-controls
+                  disable-zoom
+                  shadow-intensity="1"
+                  exposure="1.2">
+    </model-viewer>
+  </body>
+</html>
