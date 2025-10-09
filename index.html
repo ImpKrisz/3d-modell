@@ -6,36 +6,43 @@
     <title>Ceklima 3D modellek</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-      html, body {
+      body {
         margin: 0;
         padding: 0;
-        height: 100vh;
-        overflow: hidden;
         background: #f0f0f0;
-        display: flex;
-        flex-direction: column;
+      }
+      .model-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px 0;
       }
       model-viewer {
-        flex: 1;
         width: 100%;
+        display: block;
         background: #fff;
-        border-bottom: 1px solid #ccc;
+        border: 1px solid #ccc;
+        margin-bottom: 40px;
       }
     </style>
   </head>
   <body>
-    <!-- Beltéri egység -->
-    <model-viewer src="Ceklima_belteri.glb"
-                  alt="Ceklima beltéri egység"
-                  auto-rotate
-                  camera-controls>
-    </model-viewer>
+    <div class="model-container">
+      <!-- Beltéri egység -->
+      <model-viewer src="Ceklima_belteri.glb"
+                    alt="Ceklima beltéri egység"
+                    auto-rotate
+                    camera-controls
+                    style="height: 500px;">
+      </model-viewer>
 
-    <!-- Kültéri egység -->
-    <model-viewer src="Ceklima_kulteri.glb"
-                  alt="Ceklima kültéri egység"
-                  auto-rotate
-                  camera-controls>
-    </model-viewer>
+      <!-- Kültéri egység -->
+      <model-viewer src="Ceklima_kulteri.glb"
+                    alt="Ceklima kültéri egység"
+                    auto-rotate
+                    camera-controls
+                    style="height: 400px;">
+      </model-viewer>
+    </div>
   </body>
 </html>
