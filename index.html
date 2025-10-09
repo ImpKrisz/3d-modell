@@ -3,50 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ceklima 3D modellek</title>
+    <title>Ceklima 3D modell váltás</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
+      body {
         margin: 0;
         padding: 0;
-        height: 100vh;
         background: #f0f0f0;
+        font-family: sans-serif;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+      }
+      .controls {
+        margin: 20px;
+      }
+      button {
+        background: #ff6600;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button.active {
+        background: #cc5200;
       }
       model-viewer {
-        flex: 1 1 50%;
-        min-width: 300px;
-        height: 100vh;
+        width: 100%;
+        max-width: 800px;
+        height: 70vh;
         background: #fff;
-        border-right: 1px solid #ccc;
-      }
-      model-viewer:last-child {
-        border-right: none;
-      }
-      @media (max-width: 768px) {
-        html, body {
-          flex-direction: column;
-        }
-        model-viewer {
-          flex: 1 1 100%;
-          height: 50vh;
-          border-right: none;
-          border-bottom: 1px solid #ccc;
-        }
-        model-viewer:last-child {
-          border-bottom: none;
-        }
+        border: 1px solid #ccc;
+        border-radius: 8px;
       }
     </style>
   </head>
   <body>
-    <!-- Beltéri egység -->
-    <model-viewer src="Ceklima_belteri.glb"
+    <div class="controls">
+      <button id="beltériBtn" class="active">Beltéri egység</button>
+      <button id="kültériBtn">Kültéri egység</button>
+    </div>
+
+    <model-viewer id="viewer"
+                  src="Ceklima_belteri.glb"
                   alt="Ceklima beltéri egység"
                   auto-rotate
                   camera-controls
@@ -55,14 +57,24 @@
                   exposure="1.2">
     </model-viewer>
 
-    <!-- Kültéri egység -->
-    <model-viewer src="Ceklima_kulteri.glb"
-                  alt="Ceklima kültéri egység"
-                  auto-rotate
-                  camera-controls
-                  disable-zoom
-                  shadow-intensity="1"
-                  exposure="1.2">
-    </model-viewer>
+    <script>
+      const viewer = document.getElementById('viewer');
+      const beltériBtn = document.getElementById('beltériBtn');
+      const kültériBtn = document.getElementById('kültériBtn');
+
+      beltériBtn.onclick = () => {
+        viewer.src = 'Ceklima_belteri.glb';
+        viewer.alt = 'Ceklima beltéri egység';
+        beltériBtn.classList.add('active');
+        kültériBtn.classList.remove('active');
+      };
+
+      kültériBtn.onclick = () => {
+        viewer.src = 'Ceklima_kulteri.glb';
+        viewer.alt = 'Ceklima kültéri egység';
+        kültériBtn.classList.add('active');
+        beltériBtn.classList.remove('active');
+      };
+    </script>
   </body>
 </html>
