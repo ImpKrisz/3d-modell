@@ -10,12 +10,14 @@
         margin: 0;
         padding: 0;
         background: #f0f0f0;
+        font-family: sans-serif;
       }
       .model-container {
         width: 100%;
         max-width: 1200px;
-        margin: auto;
-        padding: 20px 0;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
       }
       model-viewer {
         width: 100%;
@@ -24,24 +26,30 @@
         border: 1px solid #ccc;
         margin-bottom: 40px;
       }
+      .belteri {
+        height: 500px;
+      }
+      .kulteri {
+        height: 500px;
+      }
     </style>
   </head>
   <body>
     <div class="model-container">
       <!-- Beltéri egység -->
-      <model-viewer src="Ceklima_belteri.glb"
+      <model-viewer class="belteri"
+                    src="Ceklima_belteri.glb"
                     alt="Ceklima beltéri egység"
                     auto-rotate
-                    camera-controls
-                    style="height: 500px;">
+                    camera-controls>
       </model-viewer>
 
       <!-- Kültéri egység -->
-      <model-viewer src="Ceklima_kulteri.glb"
+      <model-viewer class="kulteri"
+                    src="Ceklima_kulteri.glb"
                     alt="Ceklima kültéri egység"
                     auto-rotate
-                    camera-controls
-                    style="height: 400px;">
+                    camera-controls>
       </model-viewer>
     </div>
   </body>
