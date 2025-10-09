@@ -2,21 +2,40 @@
 <html lang="hu">
   <head>
     <meta charset="UTF-8" />
-    <title>3D Modell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceklima 3D modellek</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-      body { margin: 0; background: #f5f5f5; }
-      model-viewer { width: 100vw; height: 100vh; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+      }
+      model-viewer {
+        flex: 1;
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #ccc;
+      }
     </style>
   </head>
   <body>
+    <!-- Beltéri egység -->
     <model-viewer src="Ceklima_belteri.glb"
-                  alt="3D modell"
+                  alt="Ceklima beltéri egység"
                   auto-rotate
-                  camera-controls
-                  disable-zoom
-                  shadow-intensity="1"
-                  exposure="1.2">
+                  camera-controls>
+    </model-viewer>
+
+    <!-- Kültéri egység -->
+    <model-viewer src="Ceklima_kulteri.glb"
+                  alt="Ceklima kültéri egység"
+                  auto-rotate
+                  camera-controls>
     </model-viewer>
   </body>
 </html>
