@@ -5,25 +5,39 @@
   <title>AR nézet</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    body { margin: 0; background: #000; }
-    model-viewer { width: 100vw; height: 100vh; }
+    body {
+      margin: 0;
+      background: #f0f0f0;
+    }
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
   </style>
 </head>
 <body>
   <model-viewer
+    id="viewer"
     src=""
+    ios-src=""
     ar
     ar-modes="scene-viewer webxr quick-look"
     camera-controls
     auto-rotate
-    id="viewer">
+    shadow-intensity="1"
+    environment-image="https://modelviewer.dev/shared-assets/environments/neutral.jpg"
+    exposure="1.0"
+    style="width: 100vw; height: 100vh;">
   </model-viewer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const modelUrl = params.get('model');
     if (modelUrl) {
-      document.getElementById('viewer').setAttribute('src', modelUrl);
+      const viewer = document.getElementById('viewer');
+      viewer.setAttribute('src', modelUrl);
+      viewer.setAttribute('ios-src', modelUrl.replace('.glb', '.usdz'));
     }
   </script>
 </body>
